@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Node</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-bg: #1a1a2e;
+            --card-bg: rgba(255, 255, 255, 0.08); /* Semi-transparent white for glass effect */
+            --card-border: rgba(255, 255, 255, 0.15);
+            --text-light: #e0e0e0;
+            --text-dark: #f0f0f0;
+            --accent-color-start: #6a11cb; /* Purple */
+            --accent-color-end: #2575fc;   /* Blue */
+            --input-bg: rgba(255, 255, 255, 0.05);
+            --input-border: rgba(255, 255, 255, 0.2);
+            --input-placeholder: #a0a0a0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); /* Deep dark background gradient */
+            color: var(--text-light);
+            overflow: hidden; /* Prevent scrollbar if decorative elements go off screen */
+            position: relative; /* For decorative circles */
+        }
+
+        /* Decorative circles to enhance the glassmorphism background effect */
+        body::before, body::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px); /* Soft blur */
+            opacity: 0.4;
+            z-index: 0; /* Behind the card */
+        }
+
+        body::before {
+            width: 200px;
+            height: 200px;
+            background-color: #ff0077; /* Pinkish glow */
+            top: 10%;
+            left: 15%;
+            transform: translate(-50%, -50%);
+        }
+
+        body::after {
+            width: 250px;
+            height: 250px;
+            background-color: #00e0ff; /* Cyan glow */
+            bottom: 10%;
+            right: 15%;
+            transform: translate(50%, 50%);
+        }
+
+        .login-card {
+            background: var(--card-bg); /* Semi-transparent background */
+            backdrop-filter: blur(15px); /* Glassmorphism blur effect */
+            border: 1px solid var(--card-border); /* Subtle border for definition */
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3); /* Depth shadow */
+            padding: 40px;
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+            position: relative;
+            z-index: 10; /* Ensure card is above background elements */
+        }
+
+        h1 {
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+            color: var(--text-light);
+            font-weight: 300;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: calc(100% - 20px); /* Adjust for padding */
+            padding: 12px 10px;
+            border: 1px solid var(--input-border);
+            border-radius: 8px;
+            background: var(--input-bg); /* Semi-transparent input background */
+            color: var(--text-light);
+            font-size: 1em;
+            outline: none; /* Remove default outline */
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input[type="text"]::placeholder,
+        input[type="password"]::placeholder {
+            color: var(--input-placeholder);
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: var(--accent-color-end);
+            box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.3); /* Focus glow effect */
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(90deg, var(--accent-color-start) 0%, var(--accent-color-end) 100%); /* Gradient button */
+            color: white;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin-top: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        button[type="submit"]:hover {
+            transform: translateY(-2px); /* Slight lift on hover */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        button[type="submit"]:active {
+            transform: translateY(0); /* Return to original position on click */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <h1>Login Node</h1>
+        <form>
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
